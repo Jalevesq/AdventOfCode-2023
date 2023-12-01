@@ -19,22 +19,18 @@ class FoundNumber:
         self.number = number
         self.index = index
 
-
-def find_first_number(line: str) -> str:
-    match = re.search(r'\d', line)
-    if match:
-        return FoundNumber(match.group(0), match.start(0))
-    return FoundNumber("", "")
-
-def find_last_number(line: str) -> str:
-    match = re.search(r'\d(?=[^\d]*$)', line)
+def find_number(line: str, opt: int) -> str:
+    if opt == 0:
+        match = re.search(r'\d', line)
+    else:
+        match = re.search(r'\d(?=[^\d]*$)', line)
     if match:
         return FoundNumber(match.group(0), match.start(0))
     return FoundNumber("", "")
 
 def get_number(line: str) -> int:
-    first = find_first_number(line)
-    last = find_last_number(line)
+    first = find_number(line, 0)
+    last = find_number(line, 1)
 
     number = ""
     if first.index != -1:
