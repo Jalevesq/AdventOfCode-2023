@@ -34,7 +34,7 @@ number_dict = {
 
 
 if __name__ == "__main__":
-    input_path : str = 'input.txt'
+    input_path : str = '../input.txt'
     output : int = 0
     with open(input_path, 'r') as file:
         for line in file:
