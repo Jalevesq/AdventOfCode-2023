@@ -19,28 +19,44 @@ import re
 #########
 
 number_dict = {
-    "nine": 9,
-    "eight": 8,
-    "seven": 7,
-    "six": 6,
-    "five": 5,
-    "fourth": 4,
-    "three": 3,
-    "two": 2,
     "one": 1,
-    "zero": 0,
+    "two": 2,
+    "three": 3,
+    "fourth": 4,
+    "five": 5,
+    "six": 6,
+    "seven": 7,
+    "eight": 8,
+    "nine": 9,
 }
 
+
+def get_number(line: str) -> int:
+    first = 0
+    last = 0
+    for c in line:
+        if c.isdigit():
+            if first == 0:
+                first = int(c)
+            else:
+                last = int(c)
+    if last == 0:
+        return [first * 10, first]
+    return [first * 10, last]
+
+def get_total(content: str) -> int:
+    number = 0
+    for line in content:
+        number = number + sum(get_number(line))
+        # break
+    return number
 
 
 if __name__ == "__main__":
     input_path : str = '../input.txt'
     output : int = 0
     with open(input_path, 'r') as file:
-        for line in file:
-            print(line)
-            # found_number =
-            # output = output + found_number
-    print(f"Total Number Output: {output}")
-
-# 52974
+        content = file.read()
+    content = content.split('\n')
+    total_number = get_total(content)
+    print(total_number)
