@@ -1,7 +1,7 @@
 import re
 
 #########
-# [Question]
+# [--- Part One ---]
 # The newly-improved calibration document consists of lines of text; each line originally contained a specific calibration value
 # that the Elves now need to recover. On each line, the calibration value can be found by combining the first digit and the last digit (in that order)
 # to form a single two-digit number.
@@ -44,9 +44,9 @@ def get_number(line: str) -> int:
     return number
 
 if __name__ == "__main__":
-    input : str = 'input.txt'
+    input_path : str = '../input.txt'
     output : int = 0
-    with open(input, 'r') as file:
+    with open(input_path, 'r') as file:
         for line in file:
             found_number = int(get_number(line))
             output = output + found_number
