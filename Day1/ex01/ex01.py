@@ -22,7 +22,7 @@ number_dict = {
     "one": 1,
     "two": 2,
     "three": 3,
-    "fourth": 4,
+    "four": 4,
     "five": 5,
     "six": 6,
     "seven": 7,
@@ -34,12 +34,19 @@ number_dict = {
 def get_number(line: str) -> int:
     first = 0
     last = 0
-    for c in line:
+    for idx, c in enumerate(line):
         if c.isdigit():
             if first == 0:
                 first = int(c)
             else:
                 last = int(c)
+            continue
+        for digit in number_dict:
+            if line[idx:].find(digit) == 0:
+                if first == 0:
+                    first = number_dict[digit]
+                else:
+                    last = number_dict[digit]
     if last == 0:
         return [first * 10, first]
     return [first * 10, last]
