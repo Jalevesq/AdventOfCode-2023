@@ -26,6 +26,8 @@ import re
 
 # For each game, find the minimum set of cubes that must have been present. What is the sum of the power of these sets?
 
+# 66681
+
 class CubesEachGame:
     def __init__(self):
         self.red: int = 0
@@ -61,6 +63,7 @@ def searchHigherNumber(game: CubesEachGame, roundScores: list) -> CubesEachGame:
 def getPowerOfGame(line: str) -> int:
     game = CubesEachGame()
     splitLine = line.split(':')
+    
     allRoundPlayed = splitLine[1].split(';')
     for round in allRoundPlayed:
         roundScores = [score.strip() for score in round.split(',')]
